@@ -709,6 +709,18 @@ public class Calendar extends CordovaPlugin {
     }
   }
 
+  /**
+   * Called when a plugin is the recipient of an Activity result after the
+   * CordovaActivity has been destroyed. The Bundle will be the same as the one
+   * the plugin returned in onSaveInstanceState()
+   *
+   * @param state             Bundle containing the state of the plugin
+   * @param callbackContext   Replacement Context to return the plugin result to
+   */
+  public void onRestoreStateForActivityResult(Bundle state, CallbackContext callbackContext) {
+    this.callback = callbackContext;
+  }
+
   public static String formatICalDateTime(Date date) {
     final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd'T'HHmmss'Z'");
     sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
